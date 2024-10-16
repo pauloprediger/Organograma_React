@@ -1,0 +1,15 @@
+.buttonFormulario{
+    padding: 16px;
+    margin: 32px 0px; 
+    background-color: #6278F7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.buttonFormulario:hover {
+    background-color: #0056b3;
+}
