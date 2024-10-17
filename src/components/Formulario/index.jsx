@@ -19,6 +19,7 @@ export const Formulario = () => {
     ];
 
     const handleSubmit = (event) => {
+        console.log('Form foi salvo')
         event.preventDefault();
     }
   return (
@@ -32,6 +33,7 @@ export const Formulario = () => {
                 value={nome}
                 onChange={(e) => setNome(e.target.value)}
                 placeholder="Digite seu nome"
+                obrigatorio = {true}
             />
             <CampoTexto
                 label="Cargo"
@@ -40,16 +42,23 @@ export const Formulario = () => {
                 value={cargo}
                 onChange={(e) => setCargo(e.target.value)}
                 placeholder="Digite seu cargo"
+                obrigatorio = {true}
             />
             <CampoTexto
                 label="Imagem"
                 type="text"
                 id="imagem"
+                onChange={(e) => setImagem(e.target.value)}
                 placeholder="Digite o endereço da imagem"
                 value={imagem}
-                onChange={(e) => setImagem(e.target.value)}
+                obrigatorio = {true}
             />
-            <ListaSuspensa label = "Time:" itens = {times}/>
+            <ListaSuspensa 
+                id="time" 
+                label = "Time:" 
+                itens = {times}
+                obrigatorio = {true}
+            />
             <Botao type='submit'>
                 Criar Card
             </Botao>

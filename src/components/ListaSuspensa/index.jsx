@@ -14,6 +14,7 @@ const handleChange = (event) => {
     <div className='listaSuspensa'>
         <label>{props.label}</label>
         <select
+            required = {props.obrigatorio}
             id={props.id}
             value={itemSelecionado}
             onChange={handleChange}
@@ -32,7 +33,8 @@ ListaSuspensa.propTypes = {
             id: PropTypes.number.isRequired,
             name: PropTypes.string.isRequired
         })
-    ) 
+    ).isRequired,
+    obrigatorio: PropTypes.bool.isRequired, 
 }
 
 export default ListaSuspensa
