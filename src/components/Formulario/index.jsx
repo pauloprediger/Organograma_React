@@ -3,11 +3,14 @@ import './formulario.css';
 import { CampoTexto } from '../CampoTexto';
 import ListaSuspensa from '../ListaSuspensa';
 import { Botao } from '../Botao';
+import PropTypes from 'prop-types';
 
-export const Formulario = () => {
+export const Formulario = (props) => {
     const [nome, setNome] = useState('');
     const [cargo, setCargo] = useState('');
     const [imagem, setImagem] = useState('');
+    const [time, setTime] = useState('');
+
     const times = [
         { id: 1, name: 'Programação' },
         { id: 2, name: 'Front End' },
@@ -19,8 +22,13 @@ export const Formulario = () => {
     ];
 
     const handleSubmit = (event) => {
-        console.log('Form foi salvo')
         event.preventDefault();
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
   return (
     <section className='formulario'>
@@ -55,6 +63,8 @@ export const Formulario = () => {
             />
             <ListaSuspensa 
                 id="time" 
+                onChange={(e) => setTime(e.target.value)}
+                value={time}
                 label = "Time:" 
                 itens = {times}
                 obrigatorio = {true}
@@ -65,4 +75,7 @@ export const Formulario = () => {
         </form>
     </section>
 )
+}
+Formulario.propTypes = {
+    aoColaboradorCadastrado : PropTypes.func.isRequired,
 }

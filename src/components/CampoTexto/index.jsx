@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import './CampoTexto.css';
 import PropTypes from 'prop-types';
 
 export const CampoTexto = (props) => {
-  const aoDigitar = (event) => {
+
+
+  const aoDigitado = (event) => {
     props.onChange(event);
-    console.log(event.target.value)
+    console.log(props.value)
   }
 
   return (
@@ -14,7 +17,7 @@ export const CampoTexto = (props) => {
             type= {props.type}
             id={props.id}
             value={props.value}
-            onChange={aoDigitar}
+            onChange={aoDigitado}
             placeholder = {`${props.placeholder}...`}
             required = {props.obrigatorio}
         />

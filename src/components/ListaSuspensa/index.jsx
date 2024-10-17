@@ -1,14 +1,7 @@
-import React from 'react'
 import './ListaSuspensa.css'
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 const ListaSuspensa = (props) => {
-const[itemSelecionado, setItemSelecionado] = useState('');
-
-const handleChange = (event) => {
-    setItemSelecionado(event.target.value);
-}
 
   return (
     <div className='listaSuspensa'>
@@ -16,8 +9,8 @@ const handleChange = (event) => {
         <select
             required = {props.obrigatorio}
             id={props.id}
-            value={itemSelecionado}
-            onChange={handleChange}
+            value={props.value}
+            onChange={props.onChange}
         >
             {props.itens.map(item => <option key = {item.id}>{item.name}</option>)}
         </select>
@@ -28,6 +21,8 @@ const handleChange = (event) => {
 ListaSuspensa.propTypes = {
     id : PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    value: PropTypes.any.isRequired,
+    onChange: PropTypes.func.isRequired,
     itens: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.number.isRequired,
