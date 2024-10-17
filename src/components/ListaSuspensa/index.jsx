@@ -12,7 +12,11 @@ const ListaSuspensa = (props) => {
             value={props.value}
             onChange={props.onChange}
         >
-            {props.itens.map(item => <option key = {item.id}>{item.name}</option>)}
+            {props.itens.map((item, index) => (
+                <option key={index} value={item}>
+                    {item}
+                </option>
+             ))}
         </select>
     </div>
   )

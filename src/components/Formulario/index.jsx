@@ -11,16 +11,6 @@ export const Formulario = (props) => {
     const [imagem, setImagem] = useState('');
     const [time, setTime] = useState('');
 
-    const times = [
-        { id: 1, name: 'Programação' },
-        { id: 2, name: 'Front End' },
-        { id: 3, name: 'Data Science' },
-        { id: 4, name: 'Devops' },
-        { id: 5, name: 'Ux e Design' },
-        { id: 6, name: 'Mobile' },
-        { id: 7, name: 'Inovação e Gestão' }
-    ];
-
     const handleSubmit = (event) => {
         event.preventDefault();
         props.aoColaboradorCadastrado({
@@ -66,7 +56,7 @@ export const Formulario = (props) => {
                 onChange={(e) => setTime(e.target.value)}
                 value={time}
                 label = "Time:" 
-                itens = {times}
+                itens = {props.times}
                 obrigatorio = {true}
             />
             <Botao type='submit'>
@@ -78,4 +68,5 @@ export const Formulario = (props) => {
 }
 Formulario.propTypes = {
     aoColaboradorCadastrado : PropTypes.func.isRequired,
+    times : PropTypes.arrayOf(PropTypes.string).isRequired,
 }
