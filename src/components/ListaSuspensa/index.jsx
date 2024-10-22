@@ -12,11 +12,12 @@ const ListaSuspensa = (props) => {
             value={props.value}
             onChange={props.onChange}
         >
+            <option value="" disabled>Selecione um time</option> {/* Opção padrão */}
             {props.itens.map((item, index) => (
-                <option key={index} value={item}>
-                    {item}
-                </option>
-             ))}
+            <option key={index} value={item}>
+                {item}
+            </option>
+          ))}
         </select>
     </div>
   )
@@ -25,14 +26,9 @@ const ListaSuspensa = (props) => {
 ListaSuspensa.propTypes = {
     id : PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    value: PropTypes.any.isRequired,
+    value: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    itens: PropTypes.arrayOf(
-        PropTypes.shape({
-            id: PropTypes.number.isRequired,
-            name: PropTypes.string.isRequired
-        })
-    ).isRequired,
+    itens: PropTypes.arrayOf(PropTypes.string).isRequired,
     obrigatorio: PropTypes.bool.isRequired, 
 }
 

@@ -28,7 +28,7 @@ export const CampoTexto = (props) => {
 CampoTexto.propTypes = {
   id : PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  type: PropTypes.oneOf (['text', 'email', 'password', 'numer']),
+  type: PropTypes.oneOf (['text', 'email', 'password', 'number']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,

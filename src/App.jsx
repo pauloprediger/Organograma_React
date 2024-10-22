@@ -13,32 +13,38 @@ function App() {
     { id: 5, name: 'Ux e Design', corPrimaria: '#DB6EBF', corSecundaria: '#FAE9F5'},
     { id: 6, name: 'Mobile', corPrimaria: '#FFBA05', corSecundaria: '#FFF5D9'},
     { id: 7, name: 'Inovação e Gestão', corPrimaria: '#FF8A29', corSecundaria: '#FFEEDF'}
-];
+  ];
   
-  const [colaboradores, setColaboradores] =  useState([]);
+  const [colaboradores, setColaboradores] = useState([]);
+
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    setColaboradores([...colaboradores, colaborador])
-  } 
+    if (colaborador.time) {
+      setColaboradores([...colaboradores, { ...colaborador, id: (colaboradores.length + 1 ).toString() }]);
+    } else {
+      console.error("Colaborador não possui um time definido.");
+    }
+  };
 
   return (
-    <>
-      <div className='corpo'>
-        <section className='section_corpo'>
-          <Banner/>
-          <Formulario 
-            times = {times.map(time => time.name)} 
-            aoColaboradorCadastrado = {colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
-          {times.map (time => (
-            <Time 
-              key = {time.id}
-              tituloTime = {time.name}
-              corSecundaria = {time.corSecundaria}
-              corPrimaria = {time.corPrimaria}
-            />))}
-        </section>
-      </div>
-    </>
+    <div className='corpo'>
+      <section className='section_corpo'>
+        <Banner/>
+        <Formulario 
+          times={times.map(time => time.name)} 
+          aoColaboradorCadastrado={aoNovoColaboradorAdicionado}
+        />
+        {times.map(time => (
+          <Time 
+            key={time.id}
+            titulo={time.name}
+            corSecundaria={time.corSecundaria}
+            corPrimaria={time.corPrimaria}
+            colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
+          />
+        ))}
+      </section>
+    </div>
   )
 }
 
-export default App
+export default App;

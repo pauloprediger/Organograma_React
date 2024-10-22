@@ -15,15 +15,29 @@ export const Time = (props) => {
         style={estiloSection} 
         className='time'
     >
-        <h3 style={estiloTitulo} >{props.tituloTime}</h3>
-        <Colaborador/>  
+        <h3 style={estiloTitulo} >{props.titulo}</h3>
+        <div className='colaboradores-container'>
+            {props.colaboradores.map(colaborador =>(    
+            <Colaborador 
+                key = {colaborador.id} 
+                nome = {colaborador.nome} 
+                cargo = {colaborador.cargo} 
+                imagem = {colaborador.imagem}
+            />
+            ))}
+        </div>
     </section>
   )
 }
 Time.propTypes = {
-    tituloTime: PropTypes.string.isRequired,
+    titulo: PropTypes.string.isRequired,
     corPrimaria: PropTypes.string.isRequired,
     corSecundaria: PropTypes.string.isRequired,
-} 
-
+    colaboradores: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        nome: PropTypes.string.isRequired,
+        cargo: PropTypes.string.isRequired,
+        imagem: PropTypes.string,  // A imagem pode ser opcional
+    })).isRequired,
+};
 

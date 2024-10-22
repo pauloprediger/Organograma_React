@@ -1,16 +1,23 @@
 import React from 'react'
 import './Card.css'
+import PropTypes from 'prop-types'
 
-export const Colaborador = (props) => {
+export const Colaborador = ({nome, imagem, cargo}) => {
   return (
     <div className='colaborador'>
         <div className='cabecalho'>
-            <img src = 'https://github.com/pauloprediger.png' alt = ''/>
+            <img src = {imagem} alt = {nome}/>
         </div>
         <div className='rodape'>
-            <h4>Paulo Prediger</h4>
-            <h5>Desenvolvedor front-end</h5>
+            <h4>{nome}</h4>
+            <h5>{cargo}</h5>
         </div>
     </div>
   )
 }
+
+Colaborador.propTypes = {
+  nome: PropTypes.string.isRequired,
+  cargo: PropTypes.string.isRequired,
+  imagem: PropTypes.string,  // A imagem pode ser opcional
+};

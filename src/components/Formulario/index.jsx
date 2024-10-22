@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './formulario.css';
 import { CampoTexto } from '../CampoTexto';
 import ListaSuspensa from '../ListaSuspensa';
@@ -17,9 +17,16 @@ export const Formulario = (props) => {
             nome,
             cargo,
             imagem,
-            time
+            time,
         })
+        setNome('');
+        setCargo('');
+        setImagem('');
+        {/*setTime(props.times[0] || '');*/}
     }
+
+    
+
   return (
     <section className='formulario'>
         <form onSubmit={handleSubmit}>
