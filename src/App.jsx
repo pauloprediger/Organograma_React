@@ -33,7 +33,9 @@ function App() {
           times={times.map(time => time.name)} 
           aoColaboradorCadastrado={aoNovoColaboradorAdicionado}
         />
-        {times.map(time => (
+        {times
+        .filter(time => colaboradores.some(colaborador => colaborador.time === time.name))
+        .map(time => (
           <Time 
             key={time.id}
             titulo={time.name}
