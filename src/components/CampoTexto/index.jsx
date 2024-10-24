@@ -7,7 +7,6 @@ export const CampoTexto = (props) => {
 
   const aoDigitado = (event) => {
     props.onChange(event);
-    console.log(props.value)
   }
 
   return (

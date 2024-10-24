@@ -3,6 +3,7 @@ import { Formulario } from './components/Formulario'
 import './App.css'
 import { useState } from 'react'
 import { Time } from './components/Time';
+import { Rodape } from './components/Rodape';
 
 function App() {
   const times = [
@@ -18,10 +19,13 @@ function App() {
   const [colaboradores, setColaboradores] = useState([]);
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    if (colaborador.time) {
-      setColaboradores([...colaboradores, { ...colaborador, id: (colaboradores.length + 1 ).toString() }]);
-    } else {
-      console.error("Colaborador não possui um time definido.");
+    const time = times.find(t => t.name === colaborador.time);  // Encontra o time correspondente
+    if (time) {
+      setColaboradores([...colaboradores, { 
+        ...colaborador, 
+        id: (colaboradores.length + 1).toString(), 
+        corCabecalho: time.corPrimaria  // Define corCabecalho corretamente com corPrimaria do time
+      }]);
     }
   };
 
@@ -44,6 +48,7 @@ function App() {
             colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
           />
         ))}
+        <Rodape/>
       </section>
     </div>
   )

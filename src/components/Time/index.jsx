@@ -23,6 +23,7 @@ export const Time = (props) => {
                 nome = {colaborador.nome} 
                 cargo = {colaborador.cargo} 
                 imagem = {colaborador.imagem}
+                corCabecalho={colaborador.corCabecalho}
             />
             ))}
         </div>
@@ -37,6 +38,7 @@ Time.propTypes = {
         id: PropTypes.string.isRequired,
         nome: PropTypes.string.isRequired,
         cargo: PropTypes.string.isRequired,
+        corCabecalho : PropTypes.string.isRequired,
         imagem: PropTypes.string,  // A imagem pode ser opcional
     })).isRequired,
 };
