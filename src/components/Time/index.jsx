@@ -1,45 +1,54 @@
-import React from 'react'
-import './Time.css'
-import PropTypes from 'prop-types'
-import { Colaborador } from '../Card'
+import React from 'react';
+import './Time.css';
+import PropTypes from 'prop-types';
+import { Colaborador } from '../Colaborador';
+import hexToRgba from 'hex-to-rgba';
 
-export const Time = (props) => {
-    const estiloSection = {
-        backgroundColor: props.corSecundaria,
-    }
-    const estiloTitulo = {
-        borderColor: props.corPrimaria
-    }
+export const Time = ({ id, titulo, cor, colaboradores, aoDeletar, mudarCor }) => {
+  const estiloSection = {
+    backgroundColor: hexToRgba(cor, '0.6')
+  };
+  const estiloTitulo = {
+    borderColor: cor
+  };
+
   return (
-    <section 
-        style={estiloSection} 
-        className='time'
-    >
-        <h3 style={estiloTitulo} >{props.titulo}</h3>
+    colaboradores.length > 0 && (
+      <section style={estiloSection} className='time'>
+        <h3 style={estiloTitulo}>{titulo}</h3>
         <div className='colaboradores-container'>
-            {props.colaboradores.map(colaborador =>(    
-            <Colaborador 
-                key = {colaborador.id} 
-                nome = {colaborador.nome} 
-                cargo = {colaborador.cargo} 
-                imagem = {colaborador.imagem}
-                corCabecalho={colaborador.corCabecalho}
+          <input
+            onChange={evento => mudarCor(evento.target.value, id)}
+            value={cor}
+            type='color'
+            className='input-cor'
+          />
+          {colaboradores.map(colaborador => (
+            <Colaborador
+              key={colaborador.id}
+              colaborador={colaborador}
+              corCabecalho={colaborador.corCabecalho}
+              aoDeletar={() => aoDeletar(colaborador.id)}
             />
-            ))}
+          ))}
         </div>
-    </section>
-  )
-}
-Time.propTypes = {
-    titulo: PropTypes.string.isRequired,
-    corPrimaria: PropTypes.string.isRequired,
-    corSecundaria: PropTypes.string.isRequired,
-    colaboradores: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        nome: PropTypes.string.isRequired,
-        cargo: PropTypes.string.isRequired,
-        corCabecalho : PropTypes.string.isRequired,
-        imagem: PropTypes.string,  // A imagem pode ser opcional
-    })).isRequired,
+      </section>
+    )
+  );
 };
 
+Time.propTypes = {
+  titulo: PropTypes.string.isRequired,
+  cor: PropTypes.string.isRequired,
+  colaboradores: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      nome: PropTypes.string.isRequired,
+      cargo: PropTypes.string.isRequired,
+      corCabecalho: PropTypes.string.isRequired,
+      imagem: PropTypes.string,
+    })
+  ).isRequired,
+  aoDeletar: PropTypes.func.isRequired,
+  mudarCor: PropTypes.func.isRequired,
+};

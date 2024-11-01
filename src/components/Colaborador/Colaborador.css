@@ -1,4 +1,5 @@
 .colaborador {
+    position: relative;
     width: 220px;
 }
 
@@ -8,7 +9,7 @@
     height: 60px;
 }
 .colaborador img {
-    max-width: 100px;
+    max-width: 95px;
     max-height: 150px;
     border-radius: 50%;
     position: relative;
@@ -30,4 +31,10 @@
     font-size: 18px;
     line-height: 20px;
     margin-bottom: -10px;
+}
+
+.deletarColaborador{
+    position: absolute;
+    right: 5px;
+    top: 2px;
 }

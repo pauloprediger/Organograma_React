@@ -1,31 +1,15 @@
-/*.time {
-    text-align: center;
-    padding: 0px 0px 20px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.time h3{
-    font-size: 24px;
-    border-bottom: 4px solid;
-    display: inline-block;
-    padding-bottom: 8px;
-    text-align: center;
-}
-
-.colaboradores-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-    justify-items: center;
-    align-items: center;
-}*/
-
 .time {
     text-align: center;
-    padding: 0px 0px 20px;
-    width: 100%;
-    box-sizing: border-box;
+        padding: 0px 0px 20px; /* Remove padding para garantir que a imagem ocupe todo o espaço */
+        margin: 0; /* Remove margens */
+        width: 100%;
+        height: auto; /* Permite que a altura seja ajustada automaticamente */
+        position: relative;
+        box-sizing: border-box;
+        background-image: url('/Organograma_React/images/fundo.png'); /* Adicionando a imagem aqui */
+        background-size: cover; /* Garante que a imagem cubra todo o espaço */
+        background-repeat: no-repeat; /* Não repete a imagem */
+        background-position: center; /* Centraliza a imagem */
 }
 
 .time h3 {
@@ -43,4 +27,10 @@
     gap: 20px; /* Espaçamento entre os colaboradores */
     align-items: center; /* Centraliza verticalmente quando houver poucos elementos */
     width: 100%; /* Garante que o contêiner ocupe todo o espaço */
+}
+
+.input-cor{
+    position: absolute;
+    top: 20px;
+    right: 50px;
 }
