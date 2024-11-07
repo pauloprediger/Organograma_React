@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Colaborador } from '../Colaborador';
 import hexToRgba from 'hex-to-rgba';
 
-export const Time = ({ id, titulo, cor, colaboradores, aoDeletar, mudarCor }) => {
+export const Time = ({ id, titulo, cor, colaboradores, aoDeletar, mudarCor, aoFavoritar}) => {
   const estiloSection = {
     backgroundColor: hexToRgba(cor, '0.6')
   };
@@ -29,6 +29,7 @@ export const Time = ({ id, titulo, cor, colaboradores, aoDeletar, mudarCor }) =>
               colaborador={colaborador}
               corCabecalho={colaborador.corCabecalho}
               aoDeletar={() => aoDeletar(colaborador.id)}
+              aoFavoritar = {aoFavoritar}
             />
           ))}
         </div>

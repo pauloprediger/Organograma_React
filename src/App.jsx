@@ -6,6 +6,7 @@ import { Time } from './components/Time';
 import { Rodape } from './components/Rodape';
 import { v4 as uuidv4 } from 'uuid';
 
+
 function App() {
   // Estado para a lista de times
   const [times, setTimes] = useState([
@@ -33,7 +34,8 @@ function App() {
       setColaboradores([...colaboradores, {
         ...colaborador,
         id: uuidv4(), // Gera um ID único
-        corCabecalho: time.cor // Define a cor do cabeçalho
+        corCabecalho: time.cor, // Define a cor do cabeçalho
+        favorite: false
       }]);
     }
   };
@@ -66,6 +68,13 @@ function App() {
     });
   }
 
+  function resolverFavorito(id) {
+    setColaboradores(colaboradores.map(colaborador => {
+      if (colaborador.id === id) colaborador.favorite = !colaborador.favorite;
+      return colaborador
+    }))
+  }
+
   // Renderiza o componente App
   return (
     <div className='corpo'>
@@ -87,6 +96,7 @@ function App() {
               colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
               aoDeletar={deletaColaborador}
               mudarCor={(novaCor) => mudarCorDoTime(novaCor, time.id)}
+              aoFavoritar={resolverFavorito}
             />
           ))}
         <Rodape />

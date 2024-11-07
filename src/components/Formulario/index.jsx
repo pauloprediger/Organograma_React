@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Formulario.css';
-import { CampoTexto } from '../CampoTexto';
+import { Campo } from '../Campo';
 import ListaSuspensa from '../ListaSuspensa';
 import { Botao } from '../Botao';
 import PropTypes from 'prop-types';
@@ -36,10 +36,10 @@ export const Formulario = ({ aoColaboradorCadastrado, times, cadastrarTime }) =>
   };
 
   return (
-    <section className='formulario'>
-      <form onSubmit={handleSubmit}>
+    <section className='formulario-container'>
+      <form onSubmit={handleSubmit} className='formulario'>
         <h2 className='tituloFormulario'>Preencha os dados para criar o card de colaborador</h2>
-        <CampoTexto
+        <Campo
           label="Nome"
           type="text"
           id="nome"
@@ -48,7 +48,7 @@ export const Formulario = ({ aoColaboradorCadastrado, times, cadastrarTime }) =>
           placeholder="Digite seu nome"
           obrigatorio={true}
         />
-        <CampoTexto
+        <Campo
           label="Cargo"
           type="text"
           id="cargo"
@@ -57,7 +57,7 @@ export const Formulario = ({ aoColaboradorCadastrado, times, cadastrarTime }) =>
           placeholder="Digite seu cargo"
           obrigatorio={true}
         />
-        <CampoTexto
+        <Campo
           label="Imagem"
           type="text"
           id="imagem"
@@ -79,9 +79,9 @@ export const Formulario = ({ aoColaboradorCadastrado, times, cadastrarTime }) =>
         </Botao>
       </form>
 
-      <form onSubmit={handleTimeSubmit}>
+      <form onSubmit={handleTimeSubmit} className='formulario'>
         <h2 className='tituloFormulario'>Preencha os dados para criar um novo time</h2>
-        <CampoTexto
+        <Campo
           label="Nome"
           type="text"
           id="nomeTime"
@@ -90,9 +90,9 @@ export const Formulario = ({ aoColaboradorCadastrado, times, cadastrarTime }) =>
           placeholder="Digite o nome do Time"
           obrigatorio
         />
-        <CampoTexto
+        <Campo
             label="Cor"
-            type="text" // Tipo como texto
+            type="color" // Tipo como texto
             id="cor" // ID do campo atualizado para "cor"
             value={corTime}
             onChange={(e) => setCorTime(e.target.value)}

@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './CampoTexto.css';
+import './Campo.css';
 import PropTypes from 'prop-types';
 
-export const CampoTexto = (props) => {
+export const Campo = (props) => {
 
 
   const aoDigitado = (event) => {
@@ -10,7 +10,7 @@ export const CampoTexto = (props) => {
   }
 
   return (
-    <div className='campo-texto'>
+    <div className={`campo campo-${props.type}`}>
         <label htmlFor={props.id}> {props.label}:</label>
         <input
             type= {props.type}
@@ -24,10 +24,10 @@ export const CampoTexto = (props) => {
   );
 };
 
-CampoTexto.propTypes = {
+Campo.propTypes = {
   id : PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  type: PropTypes.oneOf (['text', 'email', 'password', 'number']),
+  type: PropTypes.oneOf (['text', 'email', 'password', 'number', 'color']),
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
