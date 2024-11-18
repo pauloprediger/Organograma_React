@@ -1,0 +1,110 @@
+{
+    "pessoas": [
+      {
+        "nome": "Afegão Hound",
+        "cargo": "Desenvolvedor Web",
+        "time": "Front End"
+      },
+      {
+        "nome": "Maria Oliveira",
+        "cargo": "Designer de Interface",
+        "time": "Front End"
+      },
+      {
+        "nome": "Carlos Souza",
+        "cargo": "UX Designer",
+        "time": "Front End"
+      },
+      {
+        "nome": "Ana Costa",
+        "cargo": "Cientista de Dados",
+        "time": "Data Science"
+      },
+      {
+        "nome": "Pedro Silva",
+        "cargo": "Engenheiro de Dados",
+        "time": "Data Science"
+      },
+      {
+        "nome": "Juliana Almeida",
+        "cargo": "Analista de BI",
+        "time": "Data Science"
+      },
+      {
+        "nome": "Lucas Pereira",
+        "cargo": "Desenvolvedor DevOps",
+        "time": "Devops"
+      },
+      {
+        "nome": "Fernanda Rocha",
+        "cargo": "Engenheira de Infraestrutura",
+        "time": "Devops"
+      },
+      {
+        "nome": "Roberto Lima",
+        "cargo": "Especialista em Cloud",
+        "time": "Devops"
+      },
+      {
+        "nome": "Julio Marques",
+        "cargo": "Desenvolvedor de Mobile",
+        "time": "Mobile"
+      },
+      {
+        "nome": "Claudia Pinto",
+        "cargo": "Analista de Qualidade Mobile",
+        "time": "Mobile"
+      },
+      {
+        "nome": "Gustavo Mendes",
+        "cargo": "Engenheiro de Software Mobile",
+        "time": "Mobile"
+      },
+      {
+        "nome": "Patricia Lima",
+        "cargo": "Product Manager",
+        "time": "Inovação e Gestão"
+      },
+      {
+        "nome": "Eduardo Ribeiro",
+        "cargo": "Consultor de Inovação",
+        "time": "Inovação e Gestão"
+      },
+      {
+        "nome": "Sérgio Costa",
+        "cargo": "Coordenador de Projetos",
+        "time": "Inovação e Gestão"
+      },
+      {
+        "nome": "Mariana Souza",
+        "cargo": "Design Researcher",
+        "time": "Ux e Design"
+      },
+      {
+        "nome": "Lucas Martins",
+        "cargo": "Designer Visual",
+        "time": "Ux e Design"
+      },
+      {
+        "nome": "Renato Oliveira",
+        "cargo": "UX/UI Designer",
+        "time": "Ux e Design"
+      },
+      {
+        "nome": "André Costa",
+        "cargo": "Programador Backend",
+        "time": "Programação"
+      },
+      {
+        "nome": "Beatriz Silva",
+        "cargo": "Desenvolvedora Frontend",
+        "time": "Programação"
+      },
+      {
+        "nome": "Thiago Almeida",
+        "cargo": "Arquiteto de Software",
+        "time": "Programação"
+      }
+    ]
+  }
+  

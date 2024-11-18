@@ -13,5 +13,30 @@
   flex-direction: column;
   align-items: center;
   background-color: white;
-  width: 60vw;;
+  width: 60vw;
+}
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  box-sizing: border-box;
+}
+.tittle-footer {
+  flex-grow: 1;
+  text-align: center;
+  color: #6278F7;
+  text-decoration: underline;
+  width: 100%;
+}
+.buttonFotter{
+  border-radius: 50%;
+  background-color: #6278F7;
+  color: white;
+  margin-right: 10px;
+}
+.img-button {
+  margin-top: 5px;
 }

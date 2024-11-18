@@ -64,7 +64,6 @@ export const Formulario = ({ aoColaboradorCadastrado, times, cadastrarTime }) =>
           onChange={(e) => setImagem(e.target.value)}
           placeholder="Digite o endereço da imagem"
           value={imagem}
-          obrigatorio={true}
         />
         <ListaSuspensa
           id="time"
