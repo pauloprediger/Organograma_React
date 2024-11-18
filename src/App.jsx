@@ -1,10 +1,13 @@
 import Banner from './components/Banner';
 import { Formulario } from './components/Formulario';
-import './App.css';
 import { useState } from 'react';
 import { Time } from './components/Time';
 import { Rodape } from './components/Rodape';
+import { Botao } from './components/Botao';
 import { v4 as uuidv4 } from 'uuid';
+import { MdOutlineVisibility } from "react-icons/md";
+
+import './App.css';
 
 
 function App() {
@@ -26,6 +29,10 @@ function App() {
   function deletaColaborador(id) {
     setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
   }
+
+  // Visibilida do Formulário 
+
+  const [formVisible, setFormVisible] = useState(true);
 
   // Adiciona um novo colaborador
   const aoNovoColaboradorAdicionado = (colaborador) => {
@@ -75,16 +82,26 @@ function App() {
     }))
   }
 
+  // Função para visibilide do Formulário
+  const toggleFormVisibility = () => {
+    setFormVisible(prevState => !prevState);
+  };
+
   // Renderiza o componente App
   return (
     <div className='corpo'>
       <section className='section_corpo'>
         <Banner />
-        <Formulario
-          cadastrarTime={cadastrarTime}
-          times={times}
-          aoColaboradorCadastrado={aoNovoColaboradorAdicionado}
-        />
+        {formVisible && (
+          <Formulario
+            cadastrarTime={cadastrarTime}
+            times={times}
+            aoColaboradorCadastrado={aoNovoColaboradorAdicionado}
+          />
+        )}          
+        <button onClick={toggleFormVisibility} className='buttonFormulario'>
+          <MdOutlineVisibility size={30} />
+        </button>
         {/* Renderiza componentes Time apenas para os times que têm colaboradores */}
         {times
           .filter(time => colaboradores.some(colaborador => colaborador.time === time.name))

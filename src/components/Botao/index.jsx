@@ -6,7 +6,9 @@ export const Botao = (props) => {
   return (
     <button 
         type={props.type} 
-        className='buttonFormulario'>{props.children}
+        className='buttonFormulario'
+    >
+      {props.children}
     </button>
   )
 }

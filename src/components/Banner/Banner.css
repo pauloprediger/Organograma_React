@@ -1,9 +1,9 @@
 .banner {
     background-color: #A6FFD6;
-    text-align: center
+    text-align: center;
+    width: 100%
 }
 
 .banner img{
     width: 100%;
-    height: 390px;
 }
