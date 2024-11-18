@@ -3,7 +3,6 @@ import { Formulario } from './components/Formulario';
 import { useEffect, useState } from 'react';
 import { Time } from './components/Time';
 import { Rodape } from './components/Rodape';
-import { Botao } from './components/Botao';
 import { v4 as uuidv4 } from 'uuid';
 import { MdOutlineVisibility } from "react-icons/md";
 
