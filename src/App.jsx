@@ -1,23 +1,23 @@
-import Banner from './components/Banner';
-import { Formulario } from './components/Formulario';
-import { useEffect, useState } from 'react';
-import { Time } from './components/Time';
-import { Rodape } from './components/Rodape';
-import { v4 as uuidv4 } from 'uuid';
+import Banner from "./components/Banner";
+import { Formulario } from "./components/Formulario";
+import { useEffect, useState } from "react";
+import { Time } from "./components/Time";
+import { Rodape } from "./components/Rodape";
+import { v4 as uuidv4 } from "uuid";
 import { MdOutlineVisibility } from "react-icons/md";
 
-import './App.css';
+import "./App.css";
 
 function App() {
   // Estado para a lista de times
   const [times, setTimes] = useState([
-    { id: uuidv4(), name: 'Programação', cor: '#57C278' },
-    { id: uuidv4(), name: 'Front End', cor: '#82CFFA' },
-    { id: uuidv4(), name: 'Data Science', cor: '#A6D157' },
-    { id: uuidv4(), name: 'Devops', cor: '#E06B69' },
-    { id: uuidv4(), name: 'Ux e Design', cor: '#DB6EBF' },
-    { id: uuidv4(), name: 'Mobile', cor: '#FFBA05' },
-    { id: uuidv4(), name: 'Inovação e Gestão', cor: '#FF8A29' }
+    { id: uuidv4(), name: "Programação", cor: "#57C278" },
+    { id: uuidv4(), name: "Front End", cor: "#82CFFA" },
+    { id: uuidv4(), name: "Data Science", cor: "#A6D157" },
+    { id: uuidv4(), name: "Devops", cor: "#E06B69" },
+    { id: uuidv4(), name: "Ux e Design", cor: "#DB6EBF" },
+    { id: uuidv4(), name: "Mobile", cor: "#FFBA05" },
+    { id: uuidv4(), name: "Inovação e Gestão", cor: "#FF8A29" },
   ]);
 
   // Estado para a lista de colaboradores
@@ -25,31 +25,33 @@ function App() {
 
   useEffect(() => {
     console.log("useEffect rodando...");
-    fetch('http://localhost:8080/pessoas')
-      .then(resposta => resposta.json())
-      .then(dados => {
+    fetch("http://localhost:8080/pessoas")
+      .then((resposta) => resposta.json())
+      .then((dados) => {
         console.log("Dados recebidos:", dados);
-        const urlImagemPadrao = 'images/user.png';
+        const urlImagemPadrao = "images/user.png";
         // Mapear os dados recebidos para incluir o ID, a cor do cabeçalho, e o atributo 'favorite'
-        const colaboradoresFormatados = dados.map(pessoa => {
-          const time = times.find(t => t.name === pessoa.time);
+        const colaboradoresFormatados = dados.map((pessoa) => {
+          const time = times.find((t) => t.name === pessoa.time);
           return {
             ...pessoa,
             id: uuidv4(), // Gera um ID único
-            corCabecalho: time ? time.cor : '#000', // Define a cor do cabeçalho com base no time
+            corCabecalho: time ? time.cor : "#000", // Define a cor do cabeçalho com base no time
             favorite: false, // Adiciona o atributo 'favorite' como false
-            imagem: pessoa.imagem || urlImagemPadrao
+            imagem: pessoa.imagem || urlImagemPadrao,
           };
         });
         console.log("Colaboradores formatados:", colaboradoresFormatados);
         setColaboradores(colaboradoresFormatados); // Atualiza o estado com os colaboradores formatados
       })
-      .catch(erro => console.error("Erro ao buscar dados:", erro));
+      .catch((erro) => console.error("Erro ao buscar dados:", erro));
   }, []);
 
   // Deleta um colaborador pelo ID
   function deletaColaborador(id) {
-    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
+    setColaboradores(
+      colaboradores.filter((colaborador) => colaborador.id !== id)
+    );
   }
 
   // Visibilidade do Formulário
@@ -57,32 +59,37 @@ function App() {
 
   // Adiciona um novo colaborador
   const aoNovoColaboradorAdicionado = (colaborador) => {
-    const time = times.find(t => t.name === colaborador.time);
-    const urlImagemPadrao = 'images/user.png';
+    const time = times.find((t) => t.name === colaborador.time);
+    const urlImagemPadrao = "images/user.png";
     if (time) {
-      setColaboradores([...colaboradores, {
-        ...colaborador,
-        id: uuidv4(), // Gera um ID único
-        corCabecalho: time.cor, // Define a cor do cabeçalho
-        favorite: false,
-        imagem: colaborador.imagem || urlImagemPadrao
-      }]);
+      setColaboradores([
+        ...colaboradores,
+        {
+          ...colaborador,
+          id: uuidv4(), // Gera um ID único
+          corCabecalho: time.cor, // Define a cor do cabeçalho
+          favorite: false,
+          imagem: colaborador.imagem || urlImagemPadrao,
+        },
+      ]);
     }
   };
 
   // Muda a cor de um time
   function mudarCorDoTime(cor, id) {
-    setTimes(times.map(time => {
-      if (time.id === id) {
-        return { ...time, cor }; // Atualiza a cor do time
-      }
-      return time; // Retorna o time inalterado
-    }));
+    setTimes(
+      times.map((time) => {
+        if (time.id === id) {
+          return { ...time, cor }; // Atualiza a cor do time
+        }
+        return time; // Retorna o time inalterado
+      })
+    );
 
     // Atualiza a corCabecalho dos colaboradores do time
-    setColaboradores(prevColaboradores => {
-      return prevColaboradores.map(colaborador => {
-        const time = times.find(t => t.id === id);
+    setColaboradores((prevColaboradores) => {
+      return prevColaboradores.map((colaborador) => {
+        const time = times.find((t) => t.id === id);
         if (colaborador.time === time.name) {
           return { ...colaborador, corCabecalho: cor }; // Atualiza a cor do cabeçalho
         }
@@ -93,7 +100,7 @@ function App() {
 
   // Cadastra um novo time
   function cadastrarTime(novoTime) {
-    setTimes(prevTimes => {
+    setTimes((prevTimes) => {
       const updatedTimes = [...prevTimes, { ...novoTime, id: uuidv4() }];
       console.log("Times atualizados", updatedTimes);
       return updatedTimes; // Retorna a lista atualizada
@@ -101,23 +108,25 @@ function App() {
   }
 
   function resolverFavorito(id) {
-    setColaboradores(colaboradores.map(colaborador => {
-      if (colaborador.id === id) colaborador.favorite = !colaborador.favorite;
-      return colaborador;
-    }));
+    setColaboradores(
+      colaboradores.map((colaborador) => {
+        if (colaborador.id === id) colaborador.favorite = !colaborador.favorite;
+        return colaborador;
+      })
+    );
   }
 
   // Função para visibilidade do Formulário
   const toggleFormVisibility = () => {
-    setFormVisible(prevState => !prevState);
+    setFormVisible((prevState) => !prevState);
   };
 
   console.log("Colaboradores no estado:", colaboradores); // Log do estado de colaboradores
 
   // Renderiza o componente App
   return (
-    <div className='corpo'>
-      <section className='section_corpo'>
+    <div className="corpo">
+      <section className="section_corpo">
         <Banner />
         {formVisible && (
           <Formulario
@@ -127,21 +136,27 @@ function App() {
           />
         )}
         <footer>
-          <h1 className='tittle-footer'>Minha Organização:</h1>
-          <button onClick={toggleFormVisibility} className='buttonFotter'>
-            <MdOutlineVisibility size={30} className='img-button'/>
+          <h1 className="tittle-footer">Minha Organização:</h1>
+          <button onClick={toggleFormVisibility} className="buttonFotter">
+            <MdOutlineVisibility size={30} className="img-button" />
           </button>
         </footer>
         {/* Verifica se colaboradores tem itens antes de renderizar */}
         {colaboradores.length > 0 ? (
           times
-            .filter(time => colaboradores.some(colaborador => colaborador.time === time.name))
-            .map(time => (
+            .filter((time) =>
+              colaboradores.some(
+                (colaborador) => colaborador.time === time.name
+              )
+            )
+            .map((time) => (
               <Time
                 key={time.id}
                 titulo={time.name}
                 cor={time.cor}
-                colaboradores={colaboradores.filter(colaborador => colaborador.time === time.name)}
+                colaboradores={colaboradores.filter(
+                  (colaborador) => colaborador.time === time.name
+                )}
                 aoDeletar={deletaColaborador}
                 mudarCor={(novaCor) => mudarCorDoTime(novaCor, time.id)}
                 aoFavoritar={resolverFavorito}
