@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import React from 'react';
 import './Campo.css';
 import PropTypes from 'prop-types';
 
-export const Campo = (props) => {
+interface CampoProps {
+  id: string;
+  label: string;
+  type: 'text' | 'email' | 'password' | 'number' | 'color';
+  value: string;
+  aoAlterado: (valor: string) => void;
+  placeholder: string;
+  obrigatorio: boolean;
+}
 
+ 
+const Campo = ( props :CampoProps) => {
 
-  const aoDigitado = (event) => {
-    props.onChange(event);
+  const aoDigitado = (event: React.SyntheticEvent<InputEvent>) => {
+    props.aoAlterado(event.target.value);
   }
 
   return (
@@ -16,13 +26,15 @@ export const Campo = (props) => {
             type= {props.type}
             id={props.id}
             value={props.value}
-            onChange={aoDigitado}
+            onChange={event => aoDigitado}
             placeholder = {`${props.placeholder}...`}
             required = {props.obrigatorio}
         />
     </div>
   );
 };
+
+export default Campo
 
 Campo.propTypes = {
   id : PropTypes.string.isRequired,

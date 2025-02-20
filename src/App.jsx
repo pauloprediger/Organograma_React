@@ -1,5 +1,5 @@
-import Banner from "./components/Banner";
 import { Formulario } from "./components/Formulario";
+import { Banner } from "./components/Banner";
 import { useEffect, useState } from "react";
 import { Time } from "./components/Time";
 import { Rodape } from "./components/Rodape";
@@ -127,7 +127,7 @@ function App() {
   return (
     <div className="corpo">
       <section className="section_corpo">
-        <Banner />
+        <Banner enderecoImagem="./images/banner.png" textoAlternativo="Banner"/>
         {formVisible && (
           <Formulario
             cadastrarTime={cadastrarTime}

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import './Botao.css'
 import PropTypes from 'prop-types';
 
-export const Botao = (props) => {
+interface BotaoProps { 
+  children: ReactElement;
+}
+
+
+export const Botao = (props : BotaoProps) => {
   return (
     <button 
-        type={props.type} 
         className='buttonFormulario'
     >
       {props.children}
