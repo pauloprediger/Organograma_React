@@ -1,4 +1,3 @@
-import React from 'react'
 import './Rodape.css'
 
 export const Rodape = () => {

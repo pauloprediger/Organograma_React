@@ -3,7 +3,7 @@ import './Botao.css'
 import PropTypes from 'prop-types';
 
 interface BotaoProps { 
-  children: ReactElement;
+  children: ReactElement | string;
 }
 
 

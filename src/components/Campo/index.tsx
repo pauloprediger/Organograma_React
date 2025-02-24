@@ -1,47 +1,42 @@
-import React from 'react';
-import './Campo.css';
-import PropTypes from 'prop-types';
+import React from "react";
+import "./Campo.css";
 
 interface CampoProps {
   id: string;
   label: string;
-  type: 'text' | 'email' | 'password' | 'number' | 'color';
+  type: "text" | "email" | "password" | "number" | "color";
   value: string;
   aoAlterado: (valor: string) => void;
-  placeholder: string;
-  obrigatorio: boolean;
+  placeholder?: string;
+  obrigatorio?: boolean;
 }
 
- 
-const Campo = ( props :CampoProps) => {
-
-  const aoDigitado = (event: React.SyntheticEvent<InputEvent>) => {
-    props.aoAlterado(event.target.value);
-  }
+const Campo = ({
+  type,
+  label,
+  id,
+  value,
+  placeholder,
+  aoAlterado,
+  obrigatorio = false,
+}: CampoProps) => {
+  const aoDigitado = (event: React.ChangeEvent<HTMLInputElement>) => {
+    aoAlterado(event.target.value); // Agora sempre passa apenas a string
+  };
 
   return (
-    <div className={`campo campo-${props.type}`}>
-        <label htmlFor={props.id}> {props.label}:</label>
-        <input
-            type= {props.type}
-            id={props.id}
-            value={props.value}
-            onChange={event => aoDigitado}
-            placeholder = {`${props.placeholder}...`}
-            required = {props.obrigatorio}
-        />
+    <div className={`campo campo-${type}`}>
+      <label htmlFor={id}>{label}:</label>
+      <input
+        type={type}
+        id={id}
+        value={value}
+        onChange={aoDigitado}
+        placeholder={placeholder ? `${placeholder}...` : ""}
+        required={obrigatorio}
+      />
     </div>
   );
 };
 
-export default Campo
-
-Campo.propTypes = {
-  id : PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  type: PropTypes.oneOf (['text', 'email', 'password', 'number', 'color']),
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  placeholder: PropTypes.string,
-  obrigatorio: PropTypes.bool,
-};
+export default Campo;
