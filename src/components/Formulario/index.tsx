@@ -23,6 +23,7 @@ export const Formulario = ({
   const [time, setTime] = useState("");
   const [nomeTime, setNomeTime] = useState("");
   const [corTime, setCorTime] = useState("#000000");
+  const [data, setData] = useState('')
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -36,6 +37,7 @@ export const Formulario = ({
       time,
       corCabecalho: times.find((t) => t.name === time)?.cor || "#000", // Definindo a cor do cabeçalho com base no time
       favorite: false, // Inicialmente o colaborador não é favorito
+      data,
     };
 
     aoColaboradorCadastrado(colaborador); // Passando o colaborador com base na interface
@@ -84,6 +86,15 @@ export const Formulario = ({
           value={imagem}
           aoAlterado={setImagem}
           placeholder="Digite o endereço da imagem"
+        />
+        <Campo
+          label="Data de registro"
+          placeholder=""
+          type="date"
+          id="data"
+          value={data}
+          aoAlterado={valor => setData(valor)}
+          obrigatorio
         />
 
         <ListaSuspensa

@@ -4,7 +4,7 @@ import "./Campo.css";
 interface CampoProps {
   id: string;
   label: string;
-  type: "text" | "email" | "password" | "number" | "color";
+  type?: "text" | "email" | "password" | "number" | "color" | "date";
   value: string;
   aoAlterado: (valor: string) => void;
   placeholder?: string;

@@ -11,6 +11,7 @@ interface ColaboradorProps {
     favorite: boolean;
     id: string;
   };
+  data: string;
   corCabecalho: string;
   aoDeletar: () => void;
   aoFavoritar: (id: string) => void;
@@ -19,6 +20,7 @@ interface ColaboradorProps {
 export const Colaborador = ({
   colaborador,
   corCabecalho,
+  data,
   aoDeletar,
   aoFavoritar,
 }: ColaboradorProps) => {
@@ -29,6 +31,9 @@ export const Colaborador = ({
     size: 25,
     onClick: favoritar,
   };
+
+  const [ano, mes, dia] = data.split("-"); 
+
   return (
     <div className="colaborador">
       <AiFillCloseCircle
@@ -41,7 +46,12 @@ export const Colaborador = ({
       </div>
       <div className="rodape">
         <h4>{colaborador.nome}</h4>
-        <h5>{colaborador.cargo}</h5>
+        <h5>
+          {colaborador.cargo} <br />
+          {`${dia}/${mes}/${ano}`}
+        </h5>
+
+        <h5></h5>
         <div className="favoritar">
           {colaborador.favorite ? (
             <AiFillHeart {...propsFavorito} color="#ff0000" />
@@ -55,4 +65,3 @@ export const Colaborador = ({
 };
 
 export default Colaborador;
-

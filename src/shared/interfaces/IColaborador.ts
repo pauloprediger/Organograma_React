@@ -6,4 +6,5 @@ export interface IColaborador {
     imagem: string;
     favorite: boolean;
     time?: string;
+    data: string;
 }

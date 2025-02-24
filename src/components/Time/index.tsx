@@ -35,7 +35,7 @@ export const Time = ({
         <h3 style={estiloTitulo}>{titulo}</h3>
         <div className="colaboradores-container">
           <input
-            onChange={(evento) => mudarCor(evento.target.value, id)}
+            onChange={(evento) => id && mudarCor(evento.target.value, id)}
             value={cor}
             type="color"
             className="input-cor"
@@ -44,6 +44,7 @@ export const Time = ({
             <Colaborador
               key={colaborador.id}
               colaborador={colaborador}
+              data={colaborador.data} 
               corCabecalho={colaborador.corCabecalho}
               aoDeletar={() => aoDeletar(colaborador.id)}
               aoFavoritar={aoFavoritar}
